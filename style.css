@@ -1,0 +1,149 @@
+body {
+  background-color: rgb(7, 7, 7);
+  border-left: 5px solid rgb(225, 225, 103);
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: rgb(2, 2, 2);
+  height: 90vh;
+}
+#header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#main-heading {
+  text-align: center;
+  color: white;
+  height: auto;
+  width: 200px;
+}
+
+#main-heading:hover {
+  font-style: italic;
+  animation-name: anim;
+  animation-duration: 2s;
+  color: rgb(230, 199, 49);
+}
+
+@keyframes anim {
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+#add-button {
+  background-color: white;
+  margin-left: 30px;
+  border: 2px double rgb(18, 17, 17);
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+#add-button::after {
+  content: "➕";
+}
+#add-button:hover {
+  background-color: rgb(225, 225, 103);
+}
+
+#search {
+  margin-top: 30px;
+  width: -12%;
+  height: 30px;
+  background-color: rgb(247, 247, 244);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+}
+
+.main-area {
+  margin: 2px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  color: white;
+}
+
+.main-area .title-area {
+  border: 2px solid white;
+  width: 15%;
+  height: auto;
+}
+
+.main-area .notes-area {
+  /* border: 2px solid white; */
+  width: 85%;
+  height: auto;
+  margin-left: 2px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+}
+
+.notes-area .notes-card {
+  flex: 0 0 calc(31%);
+  width: 25%;
+  height: 200px;
+  background-color: rgb(240, 245, 115);
+  overflow: hidden;
+  padding: 5px;
+  border-radius: 15px;
+  margin: 5px;
+}
+.notes-area .notes-card:hover {
+  box-shadow: 8px 8px 8px rgb(236, 195, 160);
+  transform: scale(1.02);
+  transition: all 0.02s ease-in-out;
+  cursor: pointer;
+}
+
+.notes-area .notes-card .notes-title {
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: none;
+  background-color: rgb(240, 245, 115);
+}
+
+.notes-card .notes-content {
+  resize: none;
+  height: 150px;
+  width: 95%;
+  overflow-y: auto;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin: 2px;
+  background-color: rgb(240, 245, 115);
+}
+
+.bx {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 80px;
+}
+
+.bx-trash {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.bx-trash:hover {
+  color: red;
+}
