@@ -32,8 +32,11 @@ export function createNote(title = "", content = "") {
   let textArea = notesCard.querySelector(".notes-content");
   let id = note.id;
 
+  notesCard.setAttribute("id", `note-${note.id}`);
+
   titleInput.addEventListener("input", (e) => {
     updateNotes(id, e.target.value, textArea.value);
+    notesTitle.textContent = e.target.value;
   });
 
   textArea.addEventListener("input", (e) => {
@@ -43,6 +46,8 @@ export function createNote(title = "", content = "") {
   notesCard.querySelector(".delete-icon").addEventListener("click", (e) => {
     const id = e.target.getAttribute("data-id");
     deleteNotes(id);
+    notesTitle.remove();
+    notesCard.remove();
   });
 
   notesCard.querySelector(".copy-icon").addEventListener("click", (e) => {
@@ -51,4 +56,27 @@ export function createNote(title = "", content = "") {
   });
 
   notesContainer.appendChild(notesCard);
+
+  const titleContanier = document.querySelector(".title-area");
+  const notesTitle = document.createElement("a");
+  notesTitle.href = "#";
+  notesTitle.textContent = note.title || "Untitled";
+  notesTitle.classList.add("title-link");
+
+  notesTitle.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetNote = document.getElementById(`note-${note.id}`);
+    if (targetNote) {
+      targetNote.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetNote.classList.add("highlight");
+
+      setTimeout(() => {
+        targetNote.classList.remove("highlight");
+      }, 2000);
+    } else {
+      console.warn(`note-id${note.id} not found`);
+    }
+  });
+
+  titleContanier.appendChild(notesTitle);
 }

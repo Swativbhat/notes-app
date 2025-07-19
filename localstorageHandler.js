@@ -10,7 +10,11 @@ export function addNotes(note) {
 
 export function loadNotes() {
   let notesContainer = document.querySelector(".notes-area");
+  let titleContanier = document.querySelector(".title-area");
+
+  titleContanier.innerHTML = "";
   notesContainer.innerHTML = "";
+
   let notesdata = localStorage.getItem("notes");
   if (!notesdata) return;
   let notes = JSON.parse(notesdata);
@@ -18,6 +22,7 @@ export function loadNotes() {
   notes.forEach((note) => {
     let notesCard = document.createElement("div");
     notesCard.classList.add("notes-card");
+    notesCard.setAttribute("id", `note-${note.id}`);
 
     notesCard.innerHTML = `
           <div>
@@ -29,11 +34,34 @@ export function loadNotes() {
 `;
     notesContainer.appendChild(notesCard);
 
-    let titleInput = document.querySelector(".notes-title");
-    let textArea = document.querySelector(".notes-content");
+    let titleInput = notesCard.querySelector(".notes-title");
+    let textArea = notesCard.querySelector(".notes-content");
     let id = note.id;
 
+    let notesTitle = document.createElement("a");
+    notesTitle.href = "#";
+    notesTitle.textContent = note.title || "Untitled";
+    notesTitle.classList.add("title-link");
+
+    notesTitle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetNote = document.getElementById(`note-${note.id}`);
+      if (targetNote) {
+        targetNote.scrollIntoView({ behavior: "smooth", block: "center" });
+        targetNote.classList.add("highlight");
+
+        setTimeout(() => {
+          targetNote.classList.remove("highlight");
+        }, 2000);
+      } else {
+        console.warn(`note-id${note.id} not found`);
+      }
+    });
+
+    titleContanier.appendChild(notesTitle);
+
     titleInput.addEventListener("input", () => {
+      notesTitle.textContent = titleInput.value;
       updateNotes(id, titleInput.value, textArea.value);
     });
 
@@ -41,7 +69,7 @@ export function loadNotes() {
       updateNotes(id, titleInput.value, textArea.value);
     });
 
-    document.querySelector(".delete-icon").addEventListener("click", (e) => {
+    notesCard.querySelector(".delete-icon").addEventListener("click", (e) => {
       const id = e.target.getAttribute("data-id");
       deleteNotes(id);
     });
@@ -51,6 +79,8 @@ export function loadNotes() {
       copyNotes(id);
     });
   });
+
+  searchInNotes();
 }
 
 export function deleteNotes(id) {
@@ -87,7 +117,7 @@ export function copyNotes(id) {
     navigator.clipboard
       .writeText(note.content)
       .then(() => {
-        console.log("copied to clipboard");
+        alert("copied to clipboard");
       })
       .catch((error) => {
         console.log(`error ${error}`);
@@ -95,4 +125,22 @@ export function copyNotes(id) {
   } else {
     console.log("not found");
   }
+}
+
+export function searchInNotes() {
+  let searchInput = document.getElementById("search");
+
+  searchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value;
+    const notesCard = document.querySelectorAll(".notes-card");
+
+    notesCard.forEach((note) => {
+      let title = note.querySelector(".notes-title").value;
+      if (title.includes(searchTerm)) {
+        note.style.display = "block";
+      } else {
+        note.style.display = "none";
+      }
+    });
+  });
 }
