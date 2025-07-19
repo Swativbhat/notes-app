@@ -1,4 +1,4 @@
-# NotesSpace
+# NoteSpace
 A minimalist and lightweight web-based notes application for creating, editing, and managing personal notes with real-time title linking, search, and local storage support.
 
 ## Features
