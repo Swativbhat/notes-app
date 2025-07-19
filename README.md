@@ -17,7 +17,7 @@ A minimalist and lightweight web-based notes application for creating, editing, 
 
 - Responsive and clean UI
 
-##Technologies Used
+## Technologies Used
 - HTML
 
 - CSS
