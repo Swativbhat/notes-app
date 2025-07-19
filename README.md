@@ -5,40 +5,42 @@ A minimalist and lightweight web-based notes application for creating, editing, 
 
 - Add and delete notes dynamically
 
--Copy the notes content to clipboard
+- Copy the notes content to clipboard
 
--Real-time title updates and linking
+- Real-time title updates and linking
 
--Persistent storage using localStorage
+- Persistent storage using localStorage
 
--Live search functionality for notes by title
+- Live search functionality for notes by title
 
--Highlighting of notes on interaction
+- Highlighting of notes on interaction
 
--Responsive and clean UI
+- Responsive and clean UI
 
 ##Technologies Used
--HTML
+- HTML
 
--CSS
+- CSS
 
--JavaScript (ES6)
+- JavaScript (ES6)
 
 ## Running the App
 
 1.Clone the repository:
+
 ```git clone https://github.com/Swativbhat/notes-app.git```
 
 2.Open index.html in your browser:
+
 ```cd notes-app```
 
 ## How it works
--Notes are stored in the browser's localStorage and persist across sessions.
+- Notes are stored in the browser's localStorage and persist across sessions.
 
--Each note includes a title and content area.
+- Each note includes a title and content area.
 
--Title links are shown in a sidebar and update as the user edits the titles.
+- Title links are shown in a sidebar and update as the user edits the titles.
 
--Search input filters the notes in real time.
+- Search input filters the notes in real time.
 
--Highlighting provides visual feedback for active notes.
+- Highlighting provides visual feedback for active notes.
