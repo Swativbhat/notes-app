@@ -44,3 +44,5 @@ A minimalist and lightweight web-based notes application for creating, editing, 
 - Search input filters the notes in real time.
 
 - Highlighting provides visual feedback for active notes.
+
+ ![web page photo](screenshot.png) 
