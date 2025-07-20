@@ -45,4 +45,4 @@ A minimalist and lightweight web-based notes application for creating, editing, 
 
 - Highlighting provides visual feedback for active notes.
 
- ![web page photo](./screenshot.png) 
+ ![web page photo](Screenshot.png) 
